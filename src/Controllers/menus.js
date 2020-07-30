@@ -1,13 +1,14 @@
 const menusModel = require("../Models/menus");
+const formResponse = require("../Helpers/forms/formResponse");
 
 const menusController = {
   getAllMenus: (_, res) => {
     menusModel()
       .then((data) => {
-        res.json(data);
+        formResponse.succes(res, data);
       })
       .catch((err) => {
-        res.json(err);
+        formResponse.error(res, data);
       });
   },
 };

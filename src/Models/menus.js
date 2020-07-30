@@ -3,7 +3,7 @@ const db = require("../Configs/dbMySql");
 const getAllmenus = () => {
   return new Promise((resolve, reject) => {
     const queryString =
-      "SELECT produk.id_produk, produk.nama_produk, kategori.nama_kategori, produk.harga_produk FROM produk JOIN kategori ON produk.id_kategori=kategori.id_kategori";
+      "SELECT product.id_product, product.name_product, category.name_category, product.price_product FROM product JOIN category on product.category_id = category.id_category";
     db.query(queryString, (err, data) => {
       if (!err) {
         resolve(data);
