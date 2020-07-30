@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+const bodyParser = require("body-parser");
 const logger = require("morgan");
 const indexRouter = require("./src/Routes/index");
 
@@ -10,8 +11,5 @@ app.listen(process.env.PORT, () => {
   console.log(`Server is Running at ${process.env.PORT}`);
 });
 app.use(logger("dev"));
-
-// app.get("/", function (req, res) {
-//   res.send("Hello World");
-// });
+app.use(bodyParser.json());
 app.use(indexRouter);
