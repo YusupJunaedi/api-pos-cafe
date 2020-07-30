@@ -46,7 +46,7 @@ const menusController = {
         formResponse.succes(res, responseData);
       })
       .catch((err) => {
-        formResponse.err(res_err);
+        formResponse.error(res_err);
       });
   },
   deleteMenu: (req, res) => {
@@ -56,7 +56,17 @@ const menusController = {
         formResponse.succes(res, data);
       })
       .catch((err) => {
-        formResponse.err(res, err);
+        formResponse.error(res, err);
+      });
+  },
+  searchMenu: (req, res) => {
+    menusModel
+      .searchMenu(req.params.menu)
+      .then((data) => {
+        formResponse.succes(res, data);
+      })
+      .catch((err) => {
+        formResponse.error(res, err);
       });
   },
 };

@@ -75,6 +75,22 @@ const menusModel = {
       });
     });
   },
+  searchMenu: (menu) => {
+    const queryString =
+      "SELECT product.id_product, product.name_product, category.name_category, product.price_product FROM product JOIN category on product.category_id = category.id_category WHERE product.name_product=? ";
+    return new Promise((resolve, reject) => {
+      db.query(queryString, [menu], (err, data) => {
+        if (!err) {
+          if (data.length !== 0) {
+            resolve(data);
+          }
+          reject("Data not found !");
+        } else {
+          reject(err);
+        }
+      });
+    });
+  },
 };
 
 module.exports = menusModel;
