@@ -4,7 +4,7 @@ const menusModel = {
   getAllMenus: () => {
     return new Promise((resolve, reject) => {
       const queryString =
-        "SELECT product.id_product, product.name_product, category.name_category, product.price_product FROM product JOIN category on product.category_id = category.id_category";
+        "SELECT product.id_product, product.name_product, category.name_category, product.price_product, img_product FROM product JOIN category on product.category_id = category.id_category";
       db.query(queryString, (err, data) => {
         if (!err) {
           resolve(data);
@@ -15,13 +15,13 @@ const menusModel = {
     });
   },
   postNewMenu: (body) => {
-    const { name_product, category_id, price_product } = body;
+    const { name_product, category_id, price_product, img_product } = body;
     const queryString =
-      "INSERT INTO product SET name_product =?, category_id =?, price_product =?";
+      "INSERT INTO product SET name_product =?, category_id =?, price_product =?, img_product =?";
     return new Promise((resolve, reject) => {
       db.query(
         queryString,
-        [name_product, category_id, price_product],
+        [name_product, category_id, price_product, img_product],
         (err, data) => {
           if (!err) {
             resolve(data);
@@ -35,7 +35,7 @@ const menusModel = {
   getMenuById: (id) => {
     return new Promise((resolve, reject) => {
       const queryString =
-        "SELECT product.id_product, product.name_product, category.name_category, product.price_product FROM product JOIN category on product.category_id = category.id_category WHERE product.id_product = ?";
+        "SELECT product.id_product, product.name_product, category.name_category, product.price_product, product.img_product FROM product JOIN category on product.category_id = category.id_category WHERE product.id_product = ?";
       db.query(queryString, [id], (err, data) => {
         if (!err) {
           resolve(data);
@@ -46,13 +46,19 @@ const menusModel = {
     });
   },
   updateMenu: (body) => {
-    const { id_product, name_product, category_id, price_product } = body;
+    const {
+      id_product,
+      name_product,
+      category_id,
+      price_product,
+      img_product,
+    } = body;
     const queryString =
-      "UPDATE product SET name_product=?, category_id=?, price_product=? WHERE id_product=?";
+      "UPDATE product SET name_product=?, category_id=?, price_product=?, img_product=? WHERE id_product=?";
     return new Promise((resolve, reject) => {
       db.query(
         queryString,
-        [name_product, category_id, price_product, id_product],
+        [name_product, category_id, price_product, img_product, id_product],
         (err, data) => {
           if (!err) {
             resolve(data);
@@ -77,7 +83,7 @@ const menusModel = {
   },
   searchMenu: (menu) => {
     const queryString =
-      "SELECT product.id_product, product.name_product, category.name_category, product.price_product FROM product JOIN category on product.category_id = category.id_category WHERE product.name_product=? ";
+      "SELECT product.id_product, product.name_product, category.name_category, product.price_product, product.img_product FROM product JOIN category on product.category_id = category.id_category WHERE product.name_product=? ";
     return new Promise((resolve, reject) => {
       db.query(queryString, [menu], (err, data) => {
         if (!err) {
