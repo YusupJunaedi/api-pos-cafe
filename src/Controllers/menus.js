@@ -12,6 +12,36 @@ const menusController = {
         formResponse.error(res, err);
       });
   },
+  getMenuByCategory: (req, res) => {
+    menusModel
+      .getMenuByCategory()
+      .then((data) => {
+        formResponse.succes(res, data);
+      })
+      .catch((err) => {
+        formResponse.error(res, err);
+      });
+  },
+  getMenuByPrice: (req, res) => {
+    menusModel
+      .getMenuByPrice()
+      .then((data) => {
+        formResponse.succes(res, data);
+      })
+      .catch((err) => {
+        formResponse.error(res, err);
+      });
+  },
+  getMenuById: (req, res) => {
+    menusModel
+      .getMenuById()
+      .then((data) => {
+        formResponse.succes(res, data);
+      })
+      .catch((err) => {
+        formResponse.error(res, err);
+      });
+  },
   postNewMenu: (req, res) => {
     menusModel
       .postNewMenu(req.body)
@@ -21,16 +51,6 @@ const menusController = {
           ...req.body,
         };
         formResponse.succes(res, responseData);
-      })
-      .catch((err) => {
-        formResponse.error(res, err);
-      });
-  },
-  getMenuById: (req, res) => {
-    menusModel
-      .getMenuById(req.params.id)
-      .then((data) => {
-        formResponse.succes(res, data);
       })
       .catch((err) => {
         formResponse.error(res, err);

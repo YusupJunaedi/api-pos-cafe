@@ -5,8 +5,10 @@ const menusController = require("../Controllers/menus");
 const menusRouter = express.Router();
 
 menusRouter.get("/", menusController.getAllMenus);
+menusRouter.get("/menu/orderbyprice", menusController.getMenuByPrice);
+menusRouter.get("/menu/orderbycategory", menusController.getMenuByCategory);
+menusRouter.get("/menu/orderbynew", menusController.getMenuById);
 menusRouter.post("/add", menusController.postNewMenu);
-menusRouter.get("/menu/:id", menusController.getMenuById);
 menusRouter.patch("/update", menusController.updateMenu);
 menusRouter.delete("/delete/:id", menusController.deleteMenu);
 menusRouter.get("/search/:menu", menusController.searchMenu);

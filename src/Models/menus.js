@@ -4,7 +4,46 @@ const menusModel = {
   getAllMenus: () => {
     return new Promise((resolve, reject) => {
       const queryString =
-        "SELECT product.id_product, product.name_product, category.name_category, product.price_product, img_product FROM product JOIN category on product.category_id = category.id_category";
+        "SELECT product.id_product, product.name_product, category.name_category, product.price_product, img_product FROM product JOIN category on product.category_id = category.id_category ORDER BY product.name_product ASC";
+      db.query(queryString, (err, data) => {
+        if (!err) {
+          resolve(data);
+        } else {
+          reject(err);
+        }
+      });
+    });
+  },
+  getMenuByCategory: () => {
+    const queryString =
+      "SELECT product.id_product, product.name_product, category.name_category, product.price_product, img_product FROM product JOIN category on product.category_id = category.id_category ORDER BY product.category_id";
+    return new Promise((resolve, reject) => {
+      db.query(queryString, (err, data) => {
+        if (!err) {
+          resolve(data);
+        } else {
+          reject(err);
+        }
+      });
+    });
+  },
+  getMenuByPrice: () => {
+    return new Promise((resolve, reject) => {
+      const queryString =
+        "SELECT product.id_product, product.name_product, category.name_category, product.price_product, img_product FROM product JOIN category on product.category_id = category.id_category ORDER BY product.price_product";
+      db.query(queryString, (err, data) => {
+        if (!err) {
+          resolve(data);
+        } else {
+          reject(err);
+        }
+      });
+    });
+  },
+  getMenuById: () => {
+    return new Promise((resolve, reject) => {
+      const queryString =
+        "SELECT product.id_product, product.name_product, category.name_category, product.price_product, img_product FROM product JOIN category on product.category_id = category.id_category ORDER BY product.id_product DESC";
       db.query(queryString, (err, data) => {
         if (!err) {
           resolve(data);
@@ -30,19 +69,6 @@ const menusModel = {
           }
         }
       );
-    });
-  },
-  getMenuById: (id) => {
-    return new Promise((resolve, reject) => {
-      const queryString =
-        "SELECT product.id_product, product.name_product, category.name_category, product.price_product, product.img_product FROM product JOIN category on product.category_id = category.id_category WHERE product.id_product = ?";
-      db.query(queryString, [id], (err, data) => {
-        if (!err) {
-          resolve(data);
-        } else {
-          reject(err);
-        }
-      });
     });
   },
   updateMenu: (body) => {
