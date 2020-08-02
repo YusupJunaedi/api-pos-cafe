@@ -1,14 +1,15 @@
 const categorysModel = require("../Models/category");
+const formResponse = require("../Helpers/forms/formResponse");
 
 const categorysController = {
   getAllCategorys: (_, res) => {
     categorysModel
       .getCategory()
       .then((data) => {
-        res.json(data);
+        formResponse.succes(res, data);
       })
       .catch((err) => {
-        res.json(err);
+        formResponse.error(res, data);
       });
   },
 };
