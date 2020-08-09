@@ -17,7 +17,19 @@ const cartsModel = {
   },
   getAllCarts: () => {
     const queryString =
-      "SELECT cart.id_cart, product.name_product, product.price_product, cart.qty, cart.total_price, product.img_product FROM product JOIN cart ON cart.product_id=product.id_product ORDER BY id_cart ";
+      "SELECT cart.id_cart, cart.product_id, product.name_product, product.price_product, cart.qty, cart.total_price, product.img_product FROM product JOIN cart ON cart.product_id=product.id_product ORDER BY id_cart ";
+    return new Promise((resolve, reject) => {
+      db.query(queryString, (err, data) => {
+        if (!err) {
+          resolve(data);
+        } else {
+          reject(err);
+        }
+      });
+    });
+  },
+  getSumCarts: () => {
+    const queryString = "SELECT SUM(total_price) as total FROM cart";
     return new Promise((resolve, reject) => {
       db.query(queryString, (err, data) => {
         if (!err) {
@@ -44,6 +56,18 @@ const cartsModel = {
     const queryString = "DELETE FROM cart WHERE product_id=?";
     return new Promise((resolve, reject) => {
       db.query(queryString, [id], (err, data) => {
+        if (!err) {
+          resolve(data);
+        } else {
+          reject(err);
+        }
+      });
+    });
+  },
+  deleteAllCart: () => {
+    const queryString = "DELETE FROM cart";
+    return new Promise((resolve, reject) => {
+      db.query(queryString, (err, data) => {
         if (!err) {
           resolve(data);
         } else {

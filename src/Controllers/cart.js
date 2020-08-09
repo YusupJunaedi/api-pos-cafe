@@ -22,6 +22,16 @@ const cartsController = {
         formResponse.error(err, data);
       });
   },
+  getSumCarts: (_, res) => {
+    cartsModel
+      .getSumCarts()
+      .then((data) => {
+        formResponse.succes(res, data);
+      })
+      .catch((err) => {
+        formResponse.error(err, data);
+      });
+  },
   getCartById: (req, res) => {
     cartsModel
       .getCartById(req.params.id)
@@ -35,6 +45,16 @@ const cartsController = {
   deleteCartById: (req, res) => {
     cartsModel
       .deleteCartById(req.params.id)
+      .then((data) => {
+        formResponse.succes(res, data);
+      })
+      .catch((err) => {
+        formResponse.error(err, data);
+      });
+  },
+  deleteAllCart: (_, res) => {
+    cartsModel
+      .deleteAllCart()
       .then((data) => {
         formResponse.succes(res, data);
       })
