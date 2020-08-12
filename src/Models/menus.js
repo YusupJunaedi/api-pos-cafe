@@ -122,6 +122,20 @@ const menusModel = {
       });
     });
   },
+  getPaginatedMenus: (page, limit) => {
+    return new Promise((resolve, reject) => {
+      const offset = (page - 1) * limit;
+      const queryString =
+        "SELECT product.id_product, product.name_product, category.name_category, product.price_product, img_product FROM product JOIN category on product.category_id = category.id_category ORDER BY product.name_product ASC LIMIT ? OFFSET ?";
+      db.query(queryString, [parseInt(limit), offset], (err, data) => {
+        if (!err) {
+          resolve(data);
+        } else {
+          reject(err);
+        }
+      });
+    });
+  },
 };
 
 module.exports = menusModel;

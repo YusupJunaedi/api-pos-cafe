@@ -89,6 +89,17 @@ const menusController = {
         formResponse.error(res, err);
       });
   },
+  getPaginatedMenus: (req, res) => {
+    const { page, limit } = req.query;
+    menusModel
+      .getPaginatedMenus(page, limit)
+      .then((data) => {
+        formResponse.pagination(req, res, data);
+      })
+      .catch((err) => {
+        formResponse.error(res, err);
+      });
+  },
 };
 
 module.exports = menusController;

@@ -5,6 +5,7 @@ const menusController = require("../Controllers/menus");
 const menusRouter = express.Router();
 
 menusRouter.get("/", menusController.getAllMenus);
+menusRouter.get("/pagination", menusController.getPaginatedMenus);
 menusRouter.get("/menu/orderbyprice", menusController.getMenuByPrice);
 menusRouter.get("/menu/orderbycategory", menusController.getMenuByCategory);
 menusRouter.get("/menu/orderbynew", menusController.getMenuById);

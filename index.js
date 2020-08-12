@@ -11,6 +11,7 @@ const app = express();
 app.listen(process.env.PORT, () => {
   console.log(`Server is Running at ${process.env.PORT}`);
 });
+app.use(express.static("public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(logger("dev"));
