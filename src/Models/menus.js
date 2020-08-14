@@ -14,45 +14,6 @@ const menusModel = {
       });
     });
   },
-  getMenuByCategory: () => {
-    const queryString =
-      "SELECT product.id_product, product.name_product, category.name_category, product.price_product, img_product FROM product JOIN category on product.category_id = category.id_category ORDER BY product.category_id";
-    return new Promise((resolve, reject) => {
-      db.query(queryString, (err, data) => {
-        if (!err) {
-          resolve(data);
-        } else {
-          reject(err);
-        }
-      });
-    });
-  },
-  getMenuByPrice: () => {
-    return new Promise((resolve, reject) => {
-      const queryString =
-        "SELECT product.id_product, product.name_product, category.name_category, product.price_product, img_product FROM product JOIN category on product.category_id = category.id_category ORDER BY product.price_product";
-      db.query(queryString, (err, data) => {
-        if (!err) {
-          resolve(data);
-        } else {
-          reject(err);
-        }
-      });
-    });
-  },
-  getMenuById: () => {
-    return new Promise((resolve, reject) => {
-      const queryString =
-        "SELECT product.id_product, product.name_product, category.name_category, product.price_product, img_product FROM product JOIN category on product.category_id = category.id_category ORDER BY product.id_product DESC";
-      db.query(queryString, (err, data) => {
-        if (!err) {
-          resolve(data);
-        } else {
-          reject(err);
-        }
-      });
-    });
-  },
   postNewMenu: (body) => {
     const { name_product, category_id, price_product, img_product } = body;
     const queryString =
@@ -107,8 +68,8 @@ const menusModel = {
       });
     });
   },
-  searchMenu: (menu) => {
-    const queryString = `SELECT product.id_product, product.name_product, category.name_category, product.price_product, product.img_product FROM product JOIN category on product.category_id = category.id_category WHERE product.name_product LIKE '%${menu}%' `;
+  getMenuByName: (name_product) => {
+    const queryString = `SELECT product.id_product, product.name_product, category.name_category, product.price_product, product.img_product FROM product JOIN category on product.category_id = category.id_category WHERE product.name_product LIKE '%${name_product}%' `;
     return new Promise((resolve, reject) => {
       db.query(queryString, (err, data) => {
         if (!err) {
@@ -116,6 +77,18 @@ const menusModel = {
             resolve(data);
           }
           reject({ msg: "Data Not Found!" });
+        } else {
+          reject(err);
+        }
+      });
+    });
+  },
+  sortMenu: (query) => {
+    return new Promise((resolve, reject) => {
+      const queryString = `SELECT product.id_product, product.name_product, category.name_category, product.price_product, img_product FROM product JOIN category on product.category_id = category.id_category ORDER BY product.${query.by} ${query.order}`;
+      db.query(queryString, (err, data) => {
+        if (!err) {
+          resolve(data);
         } else {
           reject(err);
         }

@@ -1,17 +1,22 @@
 const express = require("express");
 // const middlewareSearch = require("../Helpers/Middlewares/middlewireSearch");
 const menusController = require("../Controllers/menus");
+const checkToken = require("../Helpers/Middlewares/checkToken");
+const checkAdmin = require("../Helpers/Middlewares/checkAdmin");
+const uploadImg = require("../Helpers/Middlewares/upload");
 
 const menusRouter = express.Router();
 
-menusRouter.get("/", menusController.getAllMenus);
-menusRouter.get("/pagination", menusController.getPaginatedMenus);
-menusRouter.get("/menu/orderbyprice", menusController.getMenuByPrice);
-menusRouter.get("/menu/orderbycategory", menusController.getMenuByCategory);
-menusRouter.get("/menu/orderbynew", menusController.getMenuById);
-menusRouter.post("/addproduct", menusController.postNewMenu);
-menusRouter.patch("/updateproduct", menusController.updateMenu);
-menusRouter.delete("/deleteproduct/:id", menusController.deleteMenu);
-menusRouter.get("/search/:menu", menusController.searchMenu);
+menusRouter.get("/", checkToken, checkToken, menusController.getAllMenus);
+menusRouter.get("/search", checkToken, menusController.getMenuByName);
+menusRouter.get("/sort", checkToken, menusController.sortMenu);
+menusRouter.get("/pagination", checkToken, menusController.getPaginatedMenus);
+menusRouter.post("/addproduct", checkAdmin, menusController.postNewMenu);
+menusRouter.patch("/updateproduct", checkAdmin, menusController.updateMenu);
+menusRouter.delete(
+  "/deleteproduct/:id",
+  checkAdmin,
+  menusController.deleteMenu
+);
 
 module.exports = menusRouter;

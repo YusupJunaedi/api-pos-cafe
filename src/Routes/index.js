@@ -6,16 +6,17 @@ const categorysRouter = require("./category");
 const historyRouter = require("./history");
 const cartsRouter = require("./cart");
 const authRouter = require("./auth");
-const checkToken = require("../Helpers/Middlewares/checkToken");
 const uploadRouter = require("./upload");
+const checkToken = require("../Helpers/Middlewares/checkToken");
+const checkAdmin = require("../Helpers/Middlewares/checkAdmin");
 
 const indexRouter = express.Router();
 
-indexRouter.use("/", checkToken, menusRouter);
-indexRouter.use("/uploads", checkToken, uploadRouter);
-indexRouter.use("/", categorysRouter);
-indexRouter.use("/", historyRouter);
-indexRouter.use("/carts", cartsRouter);
+indexRouter.use("/", menusRouter);
+indexRouter.use("/categorys", checkToken, categorysRouter);
+indexRouter.use("/history", checkAdmin, historyRouter);
+indexRouter.use("/carts", checkAdmin, cartsRouter);
 indexRouter.use("/auth", authRouter);
+indexRouter.use("/uploads", checkAdmin, uploadRouter);
 
 module.exports = indexRouter;

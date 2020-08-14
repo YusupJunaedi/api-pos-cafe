@@ -12,9 +12,9 @@ const menusController = {
         formResponse.error(res, err);
       });
   },
-  getMenuByCategory: (req, res) => {
+  searchMenu: (req, res) => {
     menusModel
-      .getMenuByCategory()
+      .searchMenu(req.params.menu)
       .then((data) => {
         formResponse.succes(res, data);
       })
@@ -22,19 +22,9 @@ const menusController = {
         formResponse.error(res, err);
       });
   },
-  getMenuByPrice: (req, res) => {
+  sortMenu: (req, res) => {
     menusModel
-      .getMenuByPrice()
-      .then((data) => {
-        formResponse.succes(res, data);
-      })
-      .catch((err) => {
-        formResponse.error(res, err);
-      });
-  },
-  getMenuById: (req, res) => {
-    menusModel
-      .getMenuById()
+      .sortMenu(req.query)
       .then((data) => {
         formResponse.succes(res, data);
       })
@@ -79,20 +69,20 @@ const menusController = {
         formResponse.error(res, err);
       });
   },
-  searchMenu: (req, res) => {
+  getPaginatedMenus: (req, res) => {
+    const { page, limit } = req.query;
     menusModel
-      .searchMenu(req.params.menu)
+      .getPaginatedMenus(page, limit)
       .then((data) => {
-        formResponse.succes(res, data);
+        formResponse.pagination(req, res, data);
       })
       .catch((err) => {
         formResponse.error(res, err);
       });
   },
-  getPaginatedMenus: (req, res) => {
-    const { page, limit } = req.query;
+  getMenuByName: (req, res) => {
     menusModel
-      .getPaginatedMenus(page, limit)
+      .getMenuByName(req.query.name_product)
       .then((data) => {
         formResponse.pagination(req, res, data);
       })

@@ -7,25 +7,32 @@ const authRouter = require("../Controllers/auth");
 const authModel = {
   postNewUser: (body) => {
     return new Promise((resolve, reject) => {
-      bcrypt.genSalt(10, (err, salt) => {
-        if (err) {
-          reject(err);
-        }
-        const { password } = body;
-        bcrypt.hash(password, salt, (err, hashedPassword) => {
-          if (err) {
-            reject(err);
-          }
-          const newBody = { ...body, password: hashedPassword };
-          const queryString = "INSERT INTO users SET ?";
-          db.query(queryString, newBody, (err, data) => {
-            if (!err) {
-              resolve(data);
-            } else {
+      const qs = "SELECT username FROM users WHERE username = ?";
+      db.query(qs, [body.username], (err, data) => {
+        if (data.length) {
+          reject({ msg: "Username is ready" });
+        } else {
+          bcrypt.genSalt(10, (err, salt) => {
+            if (err) {
               reject(err);
             }
+            const { password } = body;
+            bcrypt.hash(password, salt, (err, hashedPassword) => {
+              if (err) {
+                reject(err);
+              }
+              const newBody = { ...body, password: hashedPassword };
+              const queryString = "INSERT INTO users SET ?";
+              db.query(queryString, newBody, (err, data) => {
+                if (!err) {
+                  resolve(data);
+                } else {
+                  reject(err);
+                }
+              });
+            });
           });
-        });
+        }
       });
     });
   },
@@ -48,6 +55,9 @@ const authModel = {
                 username,
                 level_id,
               };
+              // const token = jwt.sign(payload, process.env.SECRET_KEY, {
+              //   expiresIn: "6h",
+              // });
               const token = jwt.sign(payload, process.env.SECRET_KEY, {
                 expiresIn: "6h",
               });
