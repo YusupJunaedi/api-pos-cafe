@@ -33,8 +33,10 @@ const menusController = {
       });
   },
   postNewMenu: (req, res) => {
+    // console.log(req.query);
+    // console.log(req.body.image_path);
     menusModel
-      .postNewMenu(req.body)
+      .postNewMenu(req.query, req.body.image)
       .then((data) => {
         const responseData = {
           id_product: data.insertId,

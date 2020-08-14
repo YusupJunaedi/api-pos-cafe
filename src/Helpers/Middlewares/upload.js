@@ -30,7 +30,7 @@ const upload = multer({
   fileFilter,
 });
 
-const uploadController = {
+const uploadImg = {
   singleUpload: (req, res, next) => {
     const singleUpload = upload.single("image");
     singleUpload(req, res, (err) => {
@@ -39,11 +39,11 @@ const uploadController = {
           msg: err,
         });
       } else {
-        req.body.image_path = `${process.env.API_URL}images/${req.file.filename}`;
+        req.body.image = `http://localhost:8000/images/${req.file.filename}`;
         next();
       }
     });
   },
 };
 
-module.exports = uploadController;
+module.exports = uploadImg;

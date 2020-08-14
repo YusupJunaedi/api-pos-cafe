@@ -7,11 +7,15 @@ const uploadImg = require("../Helpers/Middlewares/upload");
 
 const menusRouter = express.Router();
 
-menusRouter.get("/", checkToken, checkToken, menusController.getAllMenus);
+menusRouter.get("/", checkToken, menusController.getAllMenus);
 menusRouter.get("/search", checkToken, menusController.getMenuByName);
 menusRouter.get("/sort", checkToken, menusController.sortMenu);
 menusRouter.get("/pagination", checkToken, menusController.getPaginatedMenus);
-menusRouter.post("/addproduct", checkAdmin, menusController.postNewMenu);
+menusRouter.post(
+  "/addproduct",
+  uploadImg.singleUpload,
+  menusController.postNewMenu
+);
 menusRouter.patch("/updateproduct", checkAdmin, menusController.updateMenu);
 menusRouter.delete(
   "/deleteproduct/:id",

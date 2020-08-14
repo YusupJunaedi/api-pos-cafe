@@ -14,14 +14,14 @@ const menusModel = {
       });
     });
   },
-  postNewMenu: (body) => {
-    const { name_product, category_id, price_product, img_product } = body;
+  postNewMenu: (params, image) => {
+    const { name_product, category_id, price_product } = params;
     const queryString =
       "INSERT INTO product SET name_product =?, category_id =?, price_product =?, img_product =?";
     return new Promise((resolve, reject) => {
       db.query(
         queryString,
-        [name_product, category_id, price_product, img_product],
+        [name_product, category_id, price_product, image],
         (err, data) => {
           if (!err) {
             resolve(data);
