@@ -39,7 +39,7 @@ const uploadImg = {
           msg: err,
         });
       } else {
-        req.body.image = `http://localhost:8000/images/${req.file.filename}`;
+        req.body.image = `${process.env.URL_LOCAL}images/${req.file.filename}`;
         next();
       }
     });

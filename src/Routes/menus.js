@@ -13,10 +13,15 @@ menusRouter.get("/sort", checkToken, menusController.sortMenu);
 menusRouter.get("/pagination", checkToken, menusController.getPaginatedMenus);
 menusRouter.post(
   "/addproduct",
+  checkAdmin,
   uploadImg.singleUpload,
   menusController.postNewMenu
 );
-menusRouter.patch("/updateproduct", checkAdmin, menusController.updateMenu);
+menusRouter.patch(
+  "/updateproduct",
+  uploadImg.singleUpload,
+  menusController.updateMenu
+);
 menusRouter.delete(
   "/deleteproduct/:id",
   checkAdmin,

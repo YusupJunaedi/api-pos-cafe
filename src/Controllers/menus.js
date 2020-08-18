@@ -86,7 +86,7 @@ const menusController = {
     menusModel
       .getMenuByName(req.query.name_product)
       .then((data) => {
-        formResponse.pagination(req, res, data);
+        formResponse.succes(res, data);
       })
       .catch((err) => {
         formResponse.error(res, err);
