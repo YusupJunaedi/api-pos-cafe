@@ -15,8 +15,6 @@ const indexRouter = express.Router();
 indexRouter.use("/", menusRouter);
 indexRouter.use("/categorys", checkToken, categorysRouter);
 indexRouter.use("/history", checkAdmin, historyRouter);
-indexRouter.use("/carts", checkAdmin, cartsRouter);
 indexRouter.use("/auth", authRouter);
-indexRouter.use("/uploads", checkAdmin, uploadRouter);
 
 module.exports = indexRouter;
