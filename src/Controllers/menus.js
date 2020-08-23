@@ -14,7 +14,7 @@ const menusController = {
   },
   searchMenu: (req, res) => {
     menusModel
-      .searchMenu(req.params.menu)
+      .searchMenu(req.query)
       .then((data) => {
         formResponse.succes(res, data);
       })
@@ -33,8 +33,6 @@ const menusController = {
       });
   },
   postNewMenu: (req, res) => {
-    // console.log(req.query);
-    // console.log(req.body.image_path);
     menusModel
       .postNewMenu(req.query, req.body.image)
       .then((data) => {

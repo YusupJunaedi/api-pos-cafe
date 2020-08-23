@@ -68,9 +68,9 @@ const menusModel = {
       });
     });
   },
-  getMenuByName: (name_product) => {
-    const queryString = `SELECT product.id_product, product.name_product, category.name_category, product.price_product, product.img_product FROM product JOIN category on product.category_id = category.id_category WHERE product.name_product LIKE '%${name_product}%' `;
+  searchMenu: (query) => {
     return new Promise((resolve, reject) => {
+      const queryString = `SELECT product.id_product, product.name_product, category.name_category, product.price_product, product.img_product FROM product JOIN category on product.category_id = category.id_category WHERE product.name_product LIKE '%${query.name}%' ORDER BY product.${query.by}`;
       db.query(queryString, (err, data) => {
         if (!err) {
           if (data.length !== 0) {
