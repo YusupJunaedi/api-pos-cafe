@@ -14,8 +14,8 @@ const menusModel = {
       });
     });
   },
-  postNewMenu: (params, image) => {
-    const { name_product, category_id, price_product } = params;
+  postNewMenu: (body) => {
+    const { name_product, category_id, price_product, image } = body;
     const queryString =
       "INSERT INTO product SET name_product =?, category_id =?, price_product =?, img_product =?";
     return new Promise((resolve, reject) => {

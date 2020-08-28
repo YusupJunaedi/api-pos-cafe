@@ -34,7 +34,7 @@ const menusController = {
   },
   postNewMenu: (req, res) => {
     menusModel
-      .postNewMenu(req.query, req.body.image)
+      .postNewMenu(req.body)
       .then((data) => {
         const responseData = {
           id_product: data.insertId,
