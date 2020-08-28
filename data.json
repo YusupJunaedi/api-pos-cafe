@@ -1,0 +1,242 @@
+{
+  "isSuccess": true,
+  "status": 200,
+  "data": [
+    [
+      {
+        "invoice": 59184,
+        "cashier": "Taufiq Widi",
+        "order_date": "2020-08-08T14:17:27.000Z",
+        "menu_order": [
+          {
+            "menu_name": "Soto Ayam Bu Karti",
+            "menu_quantity": 2
+          },
+          {
+            "menu_name": "Mi Goreng",
+            "menu_quantity": 1
+          },
+          {
+            "menu_name": "Nasi Kebuli",
+            "menu_quantity": 1
+          },
+          {
+            "menu_name": "Spaghetti",
+            "menu_quantity": 2
+          }
+        ],
+        "total_amount": 151800
+      }
+    ],
+    [
+      {
+        "invoice": 28550,
+        "cashier": "Taufiq Widi",
+        "order_date": "2020-08-08T14:26:43.000Z",
+        "menu_order": [
+          {
+            "menu_name": "Soto Ayam Bu Karti",
+            "menu_quantity": 2
+          },
+          {
+            "menu_name": "Mi Goreng",
+            "menu_quantity": 2
+          },
+          {
+            "menu_name": "Nasi Kebuli",
+            "menu_quantity": 1
+          },
+          {
+            "menu_name": "Spaghetti",
+            "menu_quantity": 1
+          },
+          {
+            "menu_name": "Fettuccine",
+            "menu_quantity": 1
+          },
+          {
+            "menu_name": "Nasi Balap Bali",
+            "menu_quantity": 2
+          }
+        ],
+        "total_amount": 199100
+      }
+    ],
+    [
+      {
+        "invoice": 59118,
+        "cashier": "Taufiq Widi",
+        "order_date": "2020-08-08T14:51:15.000Z",
+        "menu_order": [
+          {
+            "menu_name": "Soto Ayam Bu Karti",
+            "menu_quantity": 1
+          },
+          {
+            "menu_name": "Mi Goreng",
+            "menu_quantity": 1
+          },
+          {
+            "menu_name": "Nasi Kebuli",
+            "menu_quantity": 7
+          }
+        ],
+        "total_amount": 179300
+      }
+    ],
+    [
+      {
+        "invoice": 56449,
+        "cashier": "Taufiq Widi",
+        "order_date": "2020-08-08T18:22:06.000Z",
+        "menu_order": [
+          {
+            "menu_name": "Fettuccine",
+            "menu_quantity": 3
+          }
+        ],
+        "total_amount": 148500
+      }
+    ],
+    [
+      {
+        "invoice": 16936,
+        "cashier": "Taufiq Widi",
+        "order_date": "2020-08-09T06:08:29.000Z",
+        "menu_order": [
+          {
+            "menu_name": "Green Tea Latte",
+            "menu_quantity": 1
+          },
+          {
+            "menu_name": "Strawberry Milk",
+            "menu_quantity": 1
+          }
+        ],
+        "total_amount": 46200
+      }
+    ],
+    [
+      {
+        "invoice": 99863,
+        "cashier": "Taufiq Widi",
+        "order_date": "2020-08-09T13:20:48.000Z",
+        "menu_order": [
+          {
+            "menu_name": "Gado-Gado",
+            "menu_quantity": 2
+          },
+          {
+            "menu_name": "Nasi Gandul",
+            "menu_quantity": 2
+          }
+        ],
+        "total_amount": 74800
+      }
+    ],
+    [
+      {
+        "invoice": 22338,
+        "cashier": "Taufiq Widi",
+        "order_date": "2020-08-10T03:07:50.000Z",
+        "menu_order": [
+          {
+            "menu_name": "Soto Ayam Bu Karti",
+            "menu_quantity": 1
+          },
+          {
+            "menu_name": "Mi Goreng",
+            "menu_quantity": 1
+          },
+          {
+            "menu_name": "Nasi Kebuli",
+            "menu_quantity": 1
+          },
+          {
+            "menu_name": "Spaghetti",
+            "menu_quantity": 1
+          }
+        ],
+        "total_amount": 91300
+      }
+    ],
+    [
+      {
+        "invoice": 84685,
+        "cashier": "Taufiq Widi",
+        "order_date": "2020-08-10T08:33:31.000Z",
+        "menu_order": [
+          {
+            "menu_name": "Soto Ayam Bu Karti",
+            "menu_quantity": 2
+          },
+          {
+            "menu_name": "Mi Goreng",
+            "menu_quantity": 1
+          },
+          {
+            "menu_name": "Nasi Kebuli",
+            "menu_quantity": 1
+          },
+          {
+            "menu_name": "Nasi Balap Bali",
+            "menu_quantity": 1
+          },
+          {
+            "menu_name": "Gado-Gado",
+            "menu_quantity": 1
+          }
+        ],
+        "total_amount": 90200
+      }
+    ],
+    [
+      {
+        "invoice": 64520,
+        "cashier": "Taufiq Widi",
+        "order_date": "2020-08-11T02:59:44.000Z",
+        "menu_order": [
+          {
+            "menu_name": "Nasi Kebuli",
+            "menu_quantity": 1
+          },
+          {
+            "menu_name": "Spaghetti",
+            "menu_quantity": 5
+          },
+          {
+            "menu_name": "Fettuccine",
+            "menu_quantity": 2
+          },
+          {
+            "menu_name": "Nasi Balap Bali",
+            "menu_quantity": 2
+          }
+        ],
+        "total_amount": 374000
+      }
+    ],
+    [
+      {
+        "invoice": 31679,
+        "cashier": "Taufiq Widi",
+        "order_date": "2020-08-17T15:49:07.000Z",
+        "menu_order": [
+          {
+            "menu_name": "Soto Ayam Bu Karti",
+            "menu_quantity": 2
+          },
+          {
+            "menu_name": "Mi Goreng",
+            "menu_quantity": 2
+          },
+          {
+            "menu_name": "Nasi Kebuli",
+            "menu_quantity": 2
+          }
+        ],
+        "total_amount": 94600
+      }
+    ]
+  ]
+}
