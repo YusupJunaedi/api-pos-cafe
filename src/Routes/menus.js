@@ -11,7 +11,11 @@ menusRouter.get("/", menusController.getAllMenus);
 menusRouter.get("/search", menusController.searchMenu);
 menusRouter.get("/sort", menusController.sortMenu);
 menusRouter.get("/pagination", menusController.getPaginatedMenus);
-menusRouter.post("/addproduct", menusController.postNewMenu);
+menusRouter.post(
+  "/addproduct",
+  uploadImg.singleUpload,
+  menusController.postNewMenu
+);
 menusRouter.patch("/updateproduct", menusController.updateMenu);
 menusRouter.delete("/deleteproduct/:id", menusController.deleteMenu);
 
