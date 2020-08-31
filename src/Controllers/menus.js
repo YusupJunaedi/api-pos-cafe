@@ -3,10 +3,11 @@ const formResponse = require("../Helpers/forms/formResponse");
 
 const menusController = {
   getAllMenus: (_, res) => {
+    const { page, limit } = req.query;
     menusModel
-      .getAllMenus()
+      .getPaginatedMenus(page, limit)
       .then((data) => {
-        formResponse.succes(res, data);
+        formResponse.pagination(req, res, data);
       })
       .catch((err) => {
         formResponse.error(res, err);

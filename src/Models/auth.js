@@ -62,7 +62,7 @@ const authModel = {
                 expiresIn: "6h",
               });
               const msg = "Login Success";
-              resolve({ msg, token });
+              resolve({ msg, token, level_id });
             }
             if (!result) {
               reject({ msg: "Wrong Password" });
