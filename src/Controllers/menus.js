@@ -2,7 +2,7 @@ const menusModel = require("../Models/menus");
 const formResponse = require("../Helpers/forms/formResponse");
 
 const menusController = {
-  getAllMenus: (_, res) => {
+  getAllMenus: (req, res) => {
     const { page, limit } = req.query;
     menusModel
       .getPaginatedMenus(page, limit)

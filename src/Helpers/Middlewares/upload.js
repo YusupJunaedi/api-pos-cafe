@@ -39,8 +39,15 @@ const uploadImg = {
           msg: err,
         });
       } else {
-        req.body.image = `${process.env.URL_LOCAL}images/${req.file.filename}`;
-        next();
+        // req.body.image = `${process.env.URL_LOCAL}images/${req.file.filename}`;
+        // next();
+        try {
+          req.body.image = `${process.env.URL_LOCAL}images/${req.file.filename}`;
+        } catch {
+          err;
+        } finally {
+          next();
+        }
       }
     });
   },

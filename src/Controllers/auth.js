@@ -22,6 +22,29 @@ const authController = {
         formResponse.error(res, err);
       });
   },
+  updateUser: (req, res) => {
+    authModel
+      .updateUser(req.body)
+      .then((data) => {
+        const responseData = {
+          ...req.body,
+        };
+        formResponse.succes(res, responseData);
+      })
+      .catch((err) => {
+        formResponse.error(res, err);
+      });
+  },
+  getDataUser: (req, res) => {
+    authModel
+      .getDataUser(req.params.id)
+      .then((data) => {
+        formResponse.succes(res, data);
+      })
+      .catch((err) => {
+        formResponse.error(res, err);
+      });
+  },
 };
 
 module.exports = authController;

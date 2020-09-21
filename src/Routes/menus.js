@@ -16,7 +16,11 @@ menusRouter.post(
   uploadImg.singleUpload,
   menusController.postNewMenu
 );
-menusRouter.patch("/updateproduct", menusController.updateMenu);
+menusRouter.patch(
+  "/updateproduct",
+  uploadImg.singleUpload,
+  menusController.updateMenu
+);
 menusRouter.delete("/deleteproduct/:id", menusController.deleteMenu);
 
 module.exports = menusRouter;

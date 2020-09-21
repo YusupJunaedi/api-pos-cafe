@@ -4,7 +4,7 @@ const menusModel = {
   getAllMenus: () => {
     return new Promise((resolve, reject) => {
       const queryString =
-        "SELECT product.id_product, product.name_product, category.name_category, product.price_product, img_product FROM product JOIN category on product.category_id = category.id_category ORDER BY product.name_product ASC";
+        "SELECT product.id_product, product.name_product, category.name_category, product.price_product, image FROM product JOIN category on product.category_id = category.id_category ORDER BY product.name_product ASC";
       db.query(queryString, (err, data) => {
         if (!err) {
           resolve(data);
@@ -17,7 +17,7 @@ const menusModel = {
   postNewMenu: (body) => {
     const { name_product, category_id, price_product, image } = body;
     const queryString =
-      "INSERT INTO product SET name_product =?, category_id =?, price_product =?, img_product =?";
+      "INSERT INTO product SET name_product =?, category_id =?, price_product =?, image =?";
     return new Promise((resolve, reject) => {
       db.query(
         queryString,
@@ -33,27 +33,16 @@ const menusModel = {
     });
   },
   updateMenu: (body) => {
-    const {
-      id_product,
-      name_product,
-      category_id,
-      price_product,
-      img_product,
-    } = body;
-    const queryString =
-      "UPDATE product SET name_product=?, category_id=?, price_product=?, img_product=? WHERE id_product=?";
+    const { id_product } = body;
+    const queryString = "UPDATE product SET ? WHERE id_product=?";
     return new Promise((resolve, reject) => {
-      db.query(
-        queryString,
-        [name_product, category_id, price_product, img_product, id_product],
-        (err, data) => {
-          if (!err) {
-            resolve(data);
-          } else {
-            reject(err);
-          }
+      db.query(queryString, [body, id_product], (err, data) => {
+        if (!err) {
+          resolve(data);
+        } else {
+          reject(err);
         }
-      );
+      });
     });
   },
   deleteMenu: (id) => {
@@ -70,7 +59,7 @@ const menusModel = {
   },
   searchMenu: (query) => {
     return new Promise((resolve, reject) => {
-      const queryString = `SELECT product.id_product, product.name_product, category.name_category, product.price_product, product.img_product FROM product JOIN category on product.category_id = category.id_category WHERE product.name_product LIKE '%${query.name}%' ORDER BY product.${query.by}`;
+      const queryString = `SELECT product.id_product, product.name_product, category.name_category, product.price_product, product.image FROM product JOIN category on product.category_id = category.id_category WHERE product.name_product LIKE '%${query.name}%' ORDER BY product.${query.by}`;
       db.query(queryString, (err, data) => {
         if (!err) {
           if (data.length !== 0) {
@@ -85,7 +74,7 @@ const menusModel = {
   },
   sortMenu: (query) => {
     return new Promise((resolve, reject) => {
-      const queryString = `SELECT product.id_product, product.name_product, category.name_category, product.price_product, img_product FROM product JOIN category on product.category_id = category.id_category ORDER BY product.${query.by} ${query.order}`;
+      const queryString = `SELECT product.id_product, product.name_product, category.name_category, product.price_product, image FROM product JOIN category on product.category_id = category.id_category ORDER BY product.${query.by} ${query.order}`;
       db.query(queryString, (err, data) => {
         if (!err) {
           resolve(data);
@@ -99,7 +88,7 @@ const menusModel = {
     return new Promise((resolve, reject) => {
       const offset = (page - 1) * limit;
       const queryString =
-        "SELECT product.id_product, product.name_product, category.name_category, product.price_product, img_product FROM product JOIN category on product.category_id = category.id_category ORDER BY product.name_product ASC LIMIT ? OFFSET ?";
+        "SELECT product.id_product, product.name_product,product.category_id, category.name_category, product.price_product, image FROM product JOIN category on product.category_id = category.id_category ORDER BY product.name_product ASC LIMIT ? OFFSET ?";
       db.query(queryString, [parseInt(limit), offset], (err, data) => {
         if (!err) {
           resolve(data);
