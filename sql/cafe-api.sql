@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 23, 2020 at 06:14 AM
--- Server version: 10.4.13-MariaDB
--- PHP Version: 7.4.7
+-- Generation Time: Nov 09, 2020 at 01:53 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -140,20 +140,31 @@ CREATE TABLE `product` (
   `name_product` text NOT NULL,
   `category_id` int(11) NOT NULL,
   `price_product` int(11) NOT NULL,
-  `img_product` varchar(255) NOT NULL
+  `image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`id_product`, `name_product`, `category_id`, `price_product`, `img_product`) VALUES
+INSERT INTO `product` (`id_product`, `name_product`, `category_id`, `price_product`, `image`) VALUES
 (1, 'Espresso', 1, 10000, 'https://pos-cafe-yusupjunaedi.netlify.app/assets/img/jeremy-ricketts-6ZnhM-xBpos-unsplash.png'),
 (2, 'Choco Rhum', 2, 28000, 'https://pos-cafe-yusupjunaedi.netlify.app/assets/img/chocorum.png'),
 (3, 'Wiener Schnitzel', 2, 69000, 'https://pos-cafe-yusupjunaedi.netlify.app/assets/img/wiener.png'),
 (11, 'Cofee Latte', 1, 15000, 'https://pos-cafe-yusupjunaedi.netlify.app/assets/img/bear.png'),
 (14, 'Red Velvet Latte', 1, 33000, 'https://pos-cafe-yusupjunaedi.netlify.app/assets/img/redvelvet.png'),
-(15, 'Salmon Truffle Teriyaki', 2, 60000, 'https://pos-cafe-yusupjunaedi.netlify.app/assets/img/salmon.png');
+(15, 'Salmon Truffle Teriyaki', 2, 60000, 'https://pos-cafe-yusupjunaedi.netlify.app/assets/img/salmon.png'),
+(38, 'Ayam Geprek Edit', 1, 13000, 'http://192.168.43.116:8000/images/1600660609484-image.PNG'),
+(39, 'Jus Alpukat', 1, 15000, 'https://cdn.idntimes.com/content-images/post/20200513/80804982-1633679013439729-4856995162210626944-n-e76c8100d5dd1d2e835cbc2edf086597.jpg'),
+(40, 'Milkshake', 1, 19000, 'https://images-gmi-pmc.edge-generalmills.com/2a612714-ee3e-4198-89fd-3f80215c0ef6.jpg'),
+(41, 'spaghetti', 2, 45000, 'https://www.inspiredtaste.net/wp-content/uploads/2019/03/Spaghetti-with-Meat-Sauce-Recipe-1-1200.jpg'),
+(42, 'Mie Ayam', 2, 8000, 'https://www.resepistimewa.com/wp-content/uploads/mie-ayam.jpg'),
+(43, 'Mie Goreng', 2, 12000, 'https://selerasa.com/wp-content/uploads/2015/09/images_mancanegara_Bakmi_bakmi-goreng3.jpg'),
+(45, 'Ramen', 0, 18000, 'https://hips.hearstapps.com/hmg-prod/images/190208-delish-ramen-horizontal-093-1550096715.jpg'),
+(47, 'Jus Mangga', 1, 10000, 'https://miro.medium.com/max/1116/1*HC1xu3AP9c7_w8BomyPK-A.jpeg'),
+(48, 'Cheese Cake', 2, 27000, 'https://www.onceuponachef.com/images/2017/12/NY-Cheesecake-1200x906.jpg'),
+(49, 'Lontong Sayur', 2, 15000, 'https://www.tagar.id/Asset/uploads2019/1587791828773-lontong-sayur.jpg'),
+(61, 'ayam kremezzz', 2, 15000, 'http://192.168.43.116:8000/images/1600660661412-image.jpg');
 
 -- --------------------------------------------------------
 
@@ -163,19 +174,25 @@ INSERT INTO `product` (`id_product`, `name_product`, `category_id`, `price_produ
 
 CREATE TABLE `users` (
   `id_user` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `level_id` int(11) NOT NULL
+  `level_id` int(11) NOT NULL,
+  `image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id_user`, `username`, `password`, `level_id`) VALUES
-(5, 'admin', '$2b$10$L5Jwy5VLReOewYa4wU85sOQTgU6zCCehWoItTnzY7lscB5gtzKt.a', 2),
-(12, 'yusup', '$2b$10$C.mIsfVq5NRrNww8.evZwusbO6GDT7zx8Lc7JpbfTBCyZrYeqThSa', 1),
-(13, 'empik', '$2b$10$JYxyYvVOXYIik2wdWVGlYumGFTzv4QcjHXBe/WV7CPidAXMf/MIqO', 1);
+INSERT INTO `users` (`id_user`, `email`, `username`, `password`, `level_id`, `image`) VALUES
+(5, 'admin@gmail.com', 'Yusup Junaedi', '$2b$10$L5Jwy5VLReOewYa4wU85sOQTgU6zCCehWoItTnzY7lscB5gtzKt.a', 2, 'http://54.166.172.106:8000/images/1600578453445-image.jpg'),
+(12, 'yusup@gmail.com', 'yusup Junaedi Edit', '$2b$10$C.mIsfVq5NRrNww8.evZwusbO6GDT7zx8Lc7JpbfTBCyZrYeqThSa', 1, 'http://54.166.172.106:8000/images/1600660462706-image.jpg'),
+(23, 'nendy@gmail.com', 'nendy', '$2b$10$msRqxkdxxNMe0M3lO41u5uFni01fzpfLbrIiH04HE0w8cwuKPTLjO', 3, ''),
+(24, 'faiz@gmail', 'Faiz Sulistiawan', '$2b$10$GK.JFrccPEpmXpO3Kr6AU.xzsqnbaMa3j7AaNu8owqynZa2/rvd02', 3, ''),
+(25, 'jamal@gmail.com', 'Jamal', '$2b$10$RPs5wm8BkCZKTL14L9xe0.pR9/OGd/FPlbmIwEfkpqqAwdr/R.co6', 3, ''),
+(27, 'empik@gmail.com', 'empik', '$2b$10$IubkXGgxD0AuGlsIIMX/Yu31wbtuKc1F.zEwtSVXpGHchwaUWW656', 3, ''),
+(28, 'rini@gmail.com', 'Rini', '$2b$10$i9RkUSF0df991STpEq3EpOmfQns7/qabCJo3UbLViIOobR8hCuKmO', 3, 'http://54.166.172.106:8000/images/1604907773719-image.PNG');
 
 --
 -- Indexes for dumped tables
@@ -263,13 +280,13 @@ ALTER TABLE `level`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id_product` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id_product` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
