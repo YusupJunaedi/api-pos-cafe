@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 09, 2020 at 01:53 PM
+-- Generation Time: Nov 09, 2020 at 02:43 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -154,7 +154,6 @@ INSERT INTO `product` (`id_product`, `name_product`, `category_id`, `price_produ
 (11, 'Cofee Latte', 1, 15000, 'https://pos-cafe-yusupjunaedi.netlify.app/assets/img/bear.png'),
 (14, 'Red Velvet Latte', 1, 33000, 'https://pos-cafe-yusupjunaedi.netlify.app/assets/img/redvelvet.png'),
 (15, 'Salmon Truffle Teriyaki', 2, 60000, 'https://pos-cafe-yusupjunaedi.netlify.app/assets/img/salmon.png'),
-(38, 'Ayam Geprek Edit', 1, 13000, 'http://192.168.43.116:8000/images/1600660609484-image.PNG'),
 (39, 'Jus Alpukat', 1, 15000, 'https://cdn.idntimes.com/content-images/post/20200513/80804982-1633679013439729-4856995162210626944-n-e76c8100d5dd1d2e835cbc2edf086597.jpg'),
 (40, 'Milkshake', 1, 19000, 'https://images-gmi-pmc.edge-generalmills.com/2a612714-ee3e-4198-89fd-3f80215c0ef6.jpg'),
 (41, 'spaghetti', 2, 45000, 'https://www.inspiredtaste.net/wp-content/uploads/2019/03/Spaghetti-with-Meat-Sauce-Recipe-1-1200.jpg'),
@@ -163,8 +162,7 @@ INSERT INTO `product` (`id_product`, `name_product`, `category_id`, `price_produ
 (45, 'Ramen', 0, 18000, 'https://hips.hearstapps.com/hmg-prod/images/190208-delish-ramen-horizontal-093-1550096715.jpg'),
 (47, 'Jus Mangga', 1, 10000, 'https://miro.medium.com/max/1116/1*HC1xu3AP9c7_w8BomyPK-A.jpeg'),
 (48, 'Cheese Cake', 2, 27000, 'https://www.onceuponachef.com/images/2017/12/NY-Cheesecake-1200x906.jpg'),
-(49, 'Lontong Sayur', 2, 15000, 'https://www.tagar.id/Asset/uploads2019/1587791828773-lontong-sayur.jpg'),
-(61, 'ayam kremezzz', 2, 15000, 'http://192.168.43.116:8000/images/1600660661412-image.jpg');
+(49, 'Lontong Sayur', 2, 15000, 'https://www.tagar.id/Asset/uploads2019/1587791828773-lontong-sayur.jpg');
 
 -- --------------------------------------------------------
 
