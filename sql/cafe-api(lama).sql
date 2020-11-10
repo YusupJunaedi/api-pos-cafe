@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 10, 2020 at 05:13 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.9
+-- Generation Time: Aug 23, 2020 at 06:14 AM
+-- Server version: 10.4.13-MariaDB
+-- PHP Version: 7.4.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -158,28 +158,6 @@ INSERT INTO `product` (`id_product`, `name_product`, `category_id`, `price_produ
 -- --------------------------------------------------------
 
 --
--- Table structure for table `transaksi`
---
-
-CREATE TABLE `transaksi` (
-  `id_trans` int(11) NOT NULL,
-  `invoice` varchar(255) NOT NULL,
-  `name_cashier` varchar(255) NOT NULL,
-  `orders` varchar(255) NOT NULL,
-  `amount` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `transaksi`
---
-
-INSERT INTO `transaksi` (`id_trans`, `invoice`, `name_cashier`, `orders`, `amount`) VALUES
-(1, '123321123', 'Yusup', 'coffee, red velvet', 50000),
-(2, '1604979539231', '1', 'Espresso,Cofee Latte', 25000);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `users`
 --
 
@@ -197,8 +175,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id_user`, `username`, `password`, `level_id`) VALUES
 (5, 'admin', '$2b$10$L5Jwy5VLReOewYa4wU85sOQTgU6zCCehWoItTnzY7lscB5gtzKt.a', 2),
 (12, 'yusup', '$2b$10$C.mIsfVq5NRrNww8.evZwusbO6GDT7zx8Lc7JpbfTBCyZrYeqThSa', 1),
-(13, 'empik', '$2b$10$JYxyYvVOXYIik2wdWVGlYumGFTzv4QcjHXBe/WV7CPidAXMf/MIqO', 1),
-(14, 'user', '$2b$10$BdeTGbQjIOYytpT01IaX3.0HH0CbTfD7t6Td7H3NMSZFTmHihPdxi', 1);
+(13, 'empik', '$2b$10$JYxyYvVOXYIik2wdWVGlYumGFTzv4QcjHXBe/WV7CPidAXMf/MIqO', 1);
 
 --
 -- Indexes for dumped tables
@@ -241,12 +218,6 @@ ALTER TABLE `level`
 ALTER TABLE `product`
   ADD PRIMARY KEY (`id_product`),
   ADD KEY `category_id` (`category_id`);
-
---
--- Indexes for table `transaksi`
---
-ALTER TABLE `transaksi`
-  ADD PRIMARY KEY (`id_trans`);
 
 --
 -- Indexes for table `users`
@@ -292,19 +263,13 @@ ALTER TABLE `level`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id_product` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
-
---
--- AUTO_INCREMENT for table `transaksi`
---
-ALTER TABLE `transaksi`
-  MODIFY `id_trans` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_product` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
